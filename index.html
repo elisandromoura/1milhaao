@@ -4,17 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rumo a 1 Milhão</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Rumo a 1 Milhão</h1>
-  <div id="counter">Restam 1000000 quadrados disponíveis.</div>
-  <div class="controls">
-    <button onclick="generatePix()">Compre seu quadrado</button>
-    <button onclick="localizarQuadrado()">Localizar quadrado</button>
-    <button onclick="finalizarCompra()">Finalizar compra</button>
-  </div>
+  <p id="contador-restantes">Carregando quadrados restantes...</p>
+  <button onclick="gerarPix()">Gerar Pix</button>
   <div id="grid"></div>
-  <script src="script.js"></script>
+
+  <script>
+    const totalQuadrados = 1000000;
+    const grid = document.getElementById("grid");
+
+    // Criar os quadrados (para demonstração, usaremos 1000)
+    for (let i = 0; i < 1000; i++) {
+      const quadrado = document.createElement("div");
+      quadrado.classList.add("quadrado");
+      grid.appendChild(quadrado);
+    }
+
+    function atualizarContador() {
+      const selecionados = document.querySelectorAll(".quadrado.selecionado").length;
+      const restantes = totalQuadrados - selecionados;
+      document.getElementById("contador-restantes").textContent =
+        `Faltam ${restantes.toLocaleString('pt-BR')} quadrados disponíveis`;
+    }
+
+    function gerarPix() {
+      alert("Gerando link Pix...");
+    }
+
+    document.querySelectorAll('.quadrado').forEach((q) => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('selecionado');
+        atualizarContador();
+      });
+    });
+
+    atualizarContador();
+  </script>
 </body>
 </html>

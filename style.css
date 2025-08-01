@@ -2,44 +2,18 @@ body {
   font-family: Arial, sans-serif;
   margin: 20px;
 }
-
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-#counter {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: green;
-}
-
-.controls {
-  margin-bottom: 10px;
-}
-
-button {
-  margin-right: 10px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 #grid {
   display: grid;
-  grid-template-columns: repeat(1000, 5px);
-  grid-auto-rows: 5px;
+  grid-template-columns: repeat(auto-fill, 10px);
   gap: 1px;
-  max-height: 500px;
-  overflow: auto;
+  max-width: 100%;
 }
-
-.pixel {
-  width: 5px;
-  height: 5px;
-  background-color: #eee;
+.quadrado {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
 }
-
-.pixel.selected {
+.quadrado.selecionado {
   background-color: blue;
 }
